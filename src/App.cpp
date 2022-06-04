@@ -99,8 +99,10 @@ void xmrig::App::onConsoleCommand(char command)
     if (command == 3) {
         LOG_WARN("%s " YELLOW("Ctrl+C received, exiting"), Tags::signal());
         close();
-    }
-    else {
+    } else if (command == 'q' || command == 'Q') {
+        LOG_INFO("%s " YELLOW_BOLD("quit"), Tags::miner());
+        close();
+    } else {
         m_controller->execCommand(command);
     }
 }
